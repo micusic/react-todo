@@ -1,11 +1,16 @@
 var TodoList = React.createClass({
+  markDone: function(e){
+  	e.target.style.textDecoration = 'line-through';
+  },
   render: function() {
+  	var that = this;
     var createItem = function(itemText, index) {
-      return <li key={index + itemText}>{itemText}</li>;
+      return <li onClick={that.markDone} key={index + itemText}>{itemText}</li>;
     };
     return <ul>{this.props.items.map(createItem)}</ul>;
   }
 });
+
 var TodoApp = React.createClass({
   getInitialState: function() {
     return {items: [], text: ''};
