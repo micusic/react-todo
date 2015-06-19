@@ -8,13 +8,13 @@ var TodoItem = React.createClass({
   render: function() {
   	var style = {};
   	if (this.state.done) {
-  		style = {'color':'grey','text-decoration':'line-through'};
+  		style = {'color':'grey','textDecoration':'line-through'};
   	} else{
 
   	};
 
-    return <li style={style} key={this.props.itemText} >
-    		 {this.props.itemText}
+    return <li style={style}>
+    		 {this.props.item}
   			 <button onClick={this.markDone}>X</button>
 	  	   </li>;	
   }
@@ -23,7 +23,7 @@ var TodoItem = React.createClass({
 var TodoList = React.createClass({
   render: function() {
     var createItem = function(itemText, index) {
-      return <TodoItem itemText={itemText} />;
+      return <TodoItem key={index} item={itemText}/>;
     };
     return <ul>{this.props.items.map(createItem)}</ul>;
   }
